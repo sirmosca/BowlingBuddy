@@ -1,0 +1,12 @@
+# Assemblies
+*.dll
+*.pdb
+
+# Folders
+[Bb]in/
+obj/
+_ReSharper.*/
+
+# Files
+*.user*
+*.suo*

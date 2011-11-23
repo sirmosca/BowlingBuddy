@@ -1,0 +1,30 @@
+﻿<Window x:Class="BowlingStats.UI.StartView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dg="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:caliburn="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+        Title="What do you want to do?" Height="434" Width="531" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <dg:DataGrid ItemsSource="{Binding Leagues}" Margin="5,5,5,41" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTextColumn Binding="{Binding Name}" Header="League" IsReadOnly="True" />
+                <dg:DataGridTemplateColumn Header="Delete">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button caliburn:Message.Attach="DeleteLeague($dataContext)" Margin="10,0,0,0">Delete</Button>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
+                <dg:DataGridTemplateColumn Header="Edit">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button caliburn:Message.Attach="EditLeague($dataContext)" Margin="10,0,0,0">Edit</Button>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+        <Button Content="Add New League" x:Name="AddLeague" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,12" Width="104" Height="23"/>
+        <Button Content="Modify Players" Height="23" HorizontalAlignment="Left" Margin="115,0,0,12" Name="ModifyPlayers" VerticalAlignment="Bottom" Width="86" />
+    </Grid>
+</Window>
