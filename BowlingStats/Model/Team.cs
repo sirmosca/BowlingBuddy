@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BowlingStats.Model
 {
     public class Team
     {
-        public Team()
-        {
-            WeeklyPoints = new List<WeeklyPoint>();
-        }
-
         public Team(string teamName)
         {
             Name = teamName;
+            WeeklyPoints = new List<WeeklyPoint>();
         }
 
         public string Name { get; set; }
@@ -21,16 +16,31 @@ namespace BowlingStats.Model
 
         public bool Equals(Team other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
             return Equals(other.Name, Name);
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (Team)) return false;
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != typeof (Team))
+            {
+                return false;
+            }
             return Equals((Team) obj);
         }
 

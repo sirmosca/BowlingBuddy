@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using BowlingStats.Model;
 using Raven.Client;
@@ -12,24 +14,41 @@ namespace BowlingStats.DataAccess
     {
         public List<League> GetAllLeagues()
         {
-            IDocumentStore documentStore = LocalDocumentStore.Instance;
-
-            using (IDocumentSession session = documentStore.OpenSession())
+            try
             {
-                return session.Query<League>().ToList();
+                IDocumentStore documentStore = LocalDocumentStore.Instance;
+
+                using (IDocumentSession session = documentStore.OpenSession())
+                {
+                    List<League> leagues = session.Query<League>().ToList();
+                    return leagues;
+                }
             }
+            catch (Exception ex)
+            {
+                WriteLog(ex);
+            }
+            return new List<League>();
         }
 
         public void DeleteLeague(int leagueId)
         {
-            IDocumentStore documentStore = LocalDocumentStore.Instance;
-
-            using (IDocumentSession session = documentStore.OpenSession())
+            try
             {
-                League leagueToDelete = session.Load<League>(leagueId);
-                session.Delete(leagueToDelete);
-                session.SaveChanges();
+                IDocumentStore documentStore = LocalDocumentStore.Instance;
+
+                using (IDocumentSession session = documentStore.OpenSession())
+                {
+                    League leagueToDelete = session.Load<League>(leagueId);
+                    session.Delete(leagueToDelete);
+                    session.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                WriteLog(ex);
+            }
+            
         }
 
         /// <summary>
@@ -39,15 +58,39 @@ namespace BowlingStats.DataAccess
         /// <returns></returns>
         public League SaveLeague(League league)
         {
-            IDocumentStore documentStore = LocalDocumentStore.Instance;
-
-            using (IDocumentSession session = documentStore.OpenSession())
+            try
             {
-                session.Store(league);
-                session.SaveChanges();
-            }
+                IDocumentStore documentStore = LocalDocumentStore.Instance;
 
-            return league;
+                using (IDocumentSession session = documentStore.OpenSession())
+                {
+                    session.Store(league);
+                    session.SaveChanges();
+                }
+
+                return league;
+            }
+            catch (Exception ex)
+            {
+                WriteLog(ex);
+            }
+            
+            return new League();
+        }
+
+        static byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
+        private void WriteLog(Exception ex)
+        {
+            using (FileStream writer = new FileStream("aaaaa.txt", FileMode.OpenOrCreate) )
+            {
+                writer.Write(GetBytes(ex.Message), 0, ex.Message.Length);
+            }
         }
     }
 }
