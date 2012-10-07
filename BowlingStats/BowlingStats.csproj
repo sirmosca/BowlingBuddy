@@ -218,12 +218,9 @@
       <DependentUpon>ConfigureLeagueView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Points.cs" />
-    <Compile Include="PrintAverages.cs" />
-    <Compile Include="PrintMatchups.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\WeeklyMatchup.cs" />
     <Compile Include="Model\WeeklyScore.cs" />
-    <Compile Include="PrintSummaries.cs" />
     <Compile Include="UI\ConfigurePlayerView.xaml.cs">
       <DependentUpon>ConfigurePlayerView.xaml</DependentUpon>
     </Compile>
