@@ -116,6 +116,12 @@ namespace BowlingStats.UI
             manager.ShowDialog(new ConfigurePlayerTeamViewModel(_league.Teams, _league.Players));
         }
 
+        public void Button()
+        {
+            WindowManager manager = new WindowManager();
+            manager.ShowDialog(new LeagueWizardViewModel());
+        }
+
         /// <summary>
         /// Determines whether this instance [can add scores].
         /// </summary>
@@ -131,6 +137,16 @@ namespace BowlingStats.UI
         {
             WindowManager manager = new WindowManager();
             manager.ShowDialog(new AddScoresViewModel(_league.Weeks, _league.Players, _league.Teams, _league.Matchups, _league.WeeklyScores));
+        }
+
+        public void OpenNewStuff()
+        {
+            WindowManager manager = new WindowManager();
+            manager.ShowWindow(new WeeklyScoresViewModel(_league.Weeks,
+                                                         _league.Teams,
+                                                         _league.Players,
+                                                         _league.Matchups,
+                                                         _league.WeeklyScores));
         }
 
         /// <summary>

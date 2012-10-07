@@ -154,6 +154,8 @@ namespace BowlingStats.UI
             new PrintAveragesReport().Print(playerAveragesReportDatas, teamAveragesReportData);
         }
 
+        
+
         /// <summary>
         /// Prints the summary.
         /// </summary>

@@ -1,7 +1,7 @@
-﻿<Window x:Class="BowlingStats.UI.ConfigurePlayerTeamView"
+﻿<UserControl x:Class="BowlingStats.UI.ConfigurePlayerTeamView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Modify Players" Height="493" Width="452" WindowStartupLocation="CenterOwner">
+        Height="493" Width="452" >
     
     <Grid>
         <DataGrid Name="Players" SelectedItem="{Binding SelectedPlayer}" AutoGenerateColumns="False" Margin="8,8,8,41" Foreground="Black" AlternatingRowBackground="#FFDE7585" CanUserAddRows="True" CanUserDeleteRows="True">
@@ -34,4 +34,4 @@
         </DataGrid>
         <Button Name="SavePlayer" Content="Save" Height="23" HorizontalAlignment="Left" Margin="347,0,0,12" VerticalAlignment="Bottom" Width="75" />
     </Grid>
-</Window>
+</UserControl>

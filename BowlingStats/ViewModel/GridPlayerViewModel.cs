@@ -6,6 +6,9 @@ namespace BowlingStats.ViewModel
 {
     public class GridPlayerViewModel : PropertyChangedBase
     {
+        private int _game1;
+        private int _game2;
+        private int _game3;
         private ObservableCollection<Player> _players;
         private Player _selectedPlayer;
         private Team _selectedTeam;
@@ -30,19 +33,47 @@ namespace BowlingStats.ViewModel
         /// Gets or sets the game1.
         /// </summary>
         /// <value>The game1.</value>
-        public int Game1 { get; set; }
+        public int Game1
+        {
+            get { return _game1; }
+            set
+            {
+                _game1 = value;
+                NotifyOfPropertyChange(() => Game1);
+                NotifyOfPropertyChange(() => Total);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the game2.
         /// </summary>
         /// <value>The game2.</value>
-        public int Game2 { get; set; }
+        public int Game2
+        {
+            get { return _game2; }
+            set
+            {
+                _game2 = value;
+                NotifyOfPropertyChange(() => Game2);
+                NotifyOfPropertyChange(() => Total);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the game3.
         /// </summary>
         /// <value>The game3.</value>
-        public int Game3 { get; set; }
+        public int Game3
+        {
+            get { return _game3; }
+            set
+            {
+                _game3 = value;
+                NotifyOfPropertyChange(() => Game3);
+                NotifyOfPropertyChange(() => Total);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the player id.
         /// </summary>
@@ -54,6 +85,7 @@ namespace BowlingStats.ViewModel
         /// </summary>
         /// <value>The name of the player.</value>
         public string PlayerName { get; set; }
+
         /// <summary>
         /// Gets or sets the grid players.
         /// </summary>
@@ -98,11 +130,13 @@ namespace BowlingStats.ViewModel
                 UpdateSelectedTeam(_selectedTeam);
             }
         }
+
         /// <summary>
         /// Gets or sets the name of the team.
         /// </summary>
         /// <value>The name of the team.</value>
         public string TeamName { get; set; }
+
         /// <summary>
         /// Gets or sets the teams.
         /// </summary>
@@ -118,6 +152,7 @@ namespace BowlingStats.ViewModel
                 NotifyOfPropertyChange(() => Teams);
             }
         }
+
         /// <summary>
         /// Gets or sets the total.
         /// </summary>

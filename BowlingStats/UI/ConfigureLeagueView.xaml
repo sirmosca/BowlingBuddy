@@ -9,5 +9,7 @@
 		<TextBox Text="{Binding Path=LeagueName}" Height="23" HorizontalAlignment="Stretch" Margin="87,2,0,0" Name="textBox1" VerticalAlignment="Top" />
 		<Button Name="SaveLeague" Content="Save" Height="23" HorizontalAlignment="Right" Margin="0,0,12,12" VerticalAlignment="Bottom" Width="75" />
         <Button Content="Add Scores" Height="126" HorizontalAlignment="Left" Margin="12,291,0,0" Name="AddScores" VerticalAlignment="Top" Width="159" />
+        <Button Content="new stuff" Height="23"  Margin="150,285,0,0" Name="OpenNewStuff"  Width="75" />
+        <Button Content="Button" Name="Button" Height="23" HorizontalAlignment="Left" Margin="70,466,0,0" VerticalAlignment="Top" Width="75" />
     </Grid>
 </Window>

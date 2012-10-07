@@ -1,0 +1,8 @@
+﻿<Window x:Class="BowlingStats.UI.LeagueWizardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LeagueWizardView" Height="300" Width="300">
+    <Grid>
+        <ContentControl Content="{Binding Path=CurrentView}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    </Grid>
+</Window>

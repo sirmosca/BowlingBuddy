@@ -233,6 +233,10 @@
       <DependentUpon>ConfigureWeeksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ConfigureWeeksViewModel.cs" />
+    <Compile Include="UI\LeagueWizardView.xaml.cs">
+      <DependentUpon>LeagueWizardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LeagueWizardViewModel.cs" />
     <Compile Include="UI\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
@@ -242,6 +246,10 @@
     </Compile>
     <Compile Include="UI\ConfigureTeamViewModel.cs" />
     <Compile Include="UI\AddScoresViewModel.cs" />
+    <Compile Include="UI\WeeklyScoresView.xaml.cs">
+      <DependentUpon>WeeklyScoresView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WeeklyScoresViewModel.cs" />
     <Compile Include="ViewModel\GridPlayerViewModel.cs" />
     <Compile Include="ViewModel\PlayerTeamViewModel.cs" />
     <Compile Include="UI\StartViewModel.cs" />
@@ -298,11 +306,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\LeagueWizardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\StartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ConfigureTeamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\WeeklyScoresView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
