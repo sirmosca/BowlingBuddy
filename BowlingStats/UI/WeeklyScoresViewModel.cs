@@ -71,6 +71,8 @@ namespace BowlingStats.UI
             get { return SelectedWeek != null && SelectedWeek.WeekNumber > 1; }
         }
 
+        public bool IsWeekSelected { get { return SelectedWeek != null; } }
+
         public Week SelectedWeek
         {
             get { return _selectedWeek; }
@@ -83,6 +85,7 @@ namespace BowlingStats.UI
                 NotifyOfPropertyChange(() => CanPrintSummary);
                 NotifyOfPropertyChange(() => CanPrintAverages);
                 NotifyOfPropertyChange(() => CanPrintMatchups);
+                NotifyOfPropertyChange(() => IsWeekSelected);
             }
         }
 

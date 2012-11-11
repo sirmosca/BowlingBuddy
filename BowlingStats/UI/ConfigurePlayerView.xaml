@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Add/Delete/Modify Player" Height="300" Width="300">
     <Grid>
-        <DataGrid Name="Players" SelectedItem="{Binding SelectedPlayer}" AutoGenerateColumns="False" Margin="8,8,8,41" Foreground="Black" AlternatingRowBackground="#FFDE7585" CanUserAddRows="True" CanUserDeleteRows="True">
+        <DataGrid Name="Players" SelectedItem="{Binding SelectedPlayer}" AutoGenerateColumns="False" Margin="8,8,8,41" 
+                  Foreground="Black" AlternatingRowBackground="#FFDE7585" CanUserAddRows="True" CanUserDeleteRows="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" CanUserReorder="False" Header="Name" />
                 <DataGridTextColumn Binding="{Binding InitialAverage}" CanUserReorder="False" Header="Average" />

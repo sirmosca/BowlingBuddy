@@ -1,84 +1,98 @@
 ﻿<Window x:Class="BowlingStats.UI.WeeklyScoresView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="WeeklyScoresView" Height="516" Width="579">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="WeeklyScoresView" Height="800" Width="600">
     <Grid Width="573">
-        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Select Week" Height="28" Margin="0,0,466,450" />
-        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" SelectedItem="{Binding SelectedWeek, Mode=TwoWay}" Height="23" DisplayMemberPath="Description" Name="Weeks" Width="235" Margin="82,0,256,454" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="23" />
+        </Grid.RowDefinitions>
         
-        <Label  Content="Home" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,46,0,0" />
-        <ComboBox DisplayMemberPath="Name" Height="23" Name="HomeTeams" Margin="0,80,300,374" />
-        <DataGrid AutoGenerateColumns="False" AlternatingRowBackground="#FFD0D0E8" Name="HomeTeamPlayers" CanUserAddRows="True" CanUserDeleteRows="True" Margin="0,112,300,32">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Player" Width="100">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding PlayerName}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox Text="{Binding PlayerName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Players}" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Team" Width="100">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TeamName}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox Text="{Binding TeamName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Teams}" SelectedItem="{Binding SelectedTeam, Mode=TwoWay}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridCheckBoxColumn Binding="{Binding Path=Absent}" CanUserReorder="False" Header="Absent" />
-                <DataGridTextColumn Binding="{Binding Path=Game1}" CanUserReorder="False" Header="Game 1" />
-                <DataGridTextColumn Binding="{Binding Path=Game2}" CanUserReorder="False" Header="Game 2" />
-                <DataGridTextColumn Binding="{Binding Path=Game3}" CanUserReorder="False" Header="Game 3" />
-                <DataGridTextColumn Binding="{Binding Path=Total, Mode=OneWay}" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="Total" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Orientation="Horizontal">
+            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Select Week"  />
+            <ComboBox Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" SelectedItem="{Binding SelectedWeek, Mode=TwoWay}" DisplayMemberPath="Description" Name="Weeks" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" IsEnabled="{Binding Path=IsWeekSelected}" >
+            <Label Grid.Column="0" Grid.Row="1"  Content="Home" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ComboBox Grid.Column="0" Grid.Row="1" DisplayMemberPath="Name" Height="23" Name="HomeTeams" VerticalAlignment="Top" HorizontalAlignment="Stretch" />
+            <DataGrid Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" AlternatingRowBackground="#FFD0D0E8" Name="HomeTeamPlayers" CanUserAddRows="True" CanUserDeleteRows="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Player" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PlayerName}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox Text="{Binding PlayerName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Players}" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Team" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TeamName}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox Text="{Binding TeamName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Teams}" SelectedItem="{Binding SelectedTeam, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Absent}" CanUserReorder="False" Header="Absent" />
+                    <DataGridTextColumn Binding="{Binding Path=Game1}" CanUserReorder="False" Header="Game 1" />
+                    <DataGridTextColumn Binding="{Binding Path=Game2}" CanUserReorder="False" Header="Game 2" />
+                    <DataGridTextColumn Binding="{Binding Path=Game3}" CanUserReorder="False" Header="Game 3" />
+                    <DataGridTextColumn Binding="{Binding Path=Total, Mode=OneWay}" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="Total" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" IsEnabled="{Binding Path=IsWeekSelected}">
+            <Label Grid.Row="1" Grid.Column="1" Content="Away" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ComboBox Grid.Row="1" Grid.Column="1"  DisplayMemberPath="Name" Height="23" Name="AwayTeams" VerticalAlignment="Top" HorizontalAlignment="Stretch" />
+            <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" AlternatingRowBackground="#FFD0D0E8" Name="AwayTeamPlayers" CanUserAddRows="True" CanUserDeleteRows="True" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Player" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PlayerName}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox Text="{Binding PlayerName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Players}" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Team" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TeamName}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox Text="{Binding TeamName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Teams}" SelectedItem="{Binding SelectedTeam, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Absent}" CanUserReorder="False" Header="Absent" />
+                    <DataGridTextColumn Binding="{Binding Path=Game1}" CanUserReorder="False" Header="Game 1" />
+                    <DataGridTextColumn Binding="{Binding Path=Game2}" CanUserReorder="False" Header="Game 2" />
+                    <DataGridTextColumn Binding="{Binding Path=Game3}" CanUserReorder="False" Header="Game 3" />
+                    <DataGridTextColumn Binding="{Binding Path=Total, Mode=OneWay}" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="Total" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
         
-        <Label Content="Away" Height="28" HorizontalAlignment="Left" Margin="279,46,0,0" VerticalAlignment="Top" />
-        <ComboBox  DisplayMemberPath="Name" Height="23" Name="AwayTeams" Margin="279,80,16,374" />
-        <DataGrid AutoGenerateColumns="False" AlternatingRowBackground="#FFD0D0E8" Name="AwayTeamPlayers" CanUserAddRows="True" CanUserDeleteRows="True" Margin="279,80,16,0" Height="333">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Player" Width="100">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding PlayerName}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox Text="{Binding PlayerName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Players}" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Team" Width="100">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TeamName}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox Text="{Binding TeamName}" DisplayMemberPath="Name" ItemsSource="{Binding Path=Teams}" SelectedItem="{Binding SelectedTeam, Mode=TwoWay}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridCheckBoxColumn Binding="{Binding Path=Absent}" CanUserReorder="False" Header="Absent" />
-                <DataGridTextColumn Binding="{Binding Path=Game1}" CanUserReorder="False" Header="Game 1" />
-                <DataGridTextColumn Binding="{Binding Path=Game2}" CanUserReorder="False" Header="Game 2" />
-                <DataGridTextColumn Binding="{Binding Path=Game3}" CanUserReorder="False" Header="Game 3" />
-                <DataGridTextColumn Binding="{Binding Path=Total, Mode=OneWay}" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="Total" />
-            </DataGrid.Columns>
-        </DataGrid>
-
-
-
-        <Button Content="Save" Height="23" Name="SaveWeeklyScores" Width="75" Margin="482,454,16,0" />
+        <Button Grid.Row="2" Grid.Column="1" Content="Save" Height="23" Name="SaveWeeklyScores" Width="75" />
         
     </Grid>
 </Window>
