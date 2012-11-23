@@ -136,12 +136,6 @@ namespace BowlingStats.UI
         public void AddScores()
         {
             WindowManager manager = new WindowManager();
-            manager.ShowDialog(new AddScoresViewModel(_league.Weeks, _league.Players, _league.Teams, _league.Matchups, _league.WeeklyScores));
-        }
-
-        public void OpenNewStuff()
-        {
-            WindowManager manager = new WindowManager();
             manager.ShowWindow(new WeeklyScoresViewModel(_league.Weeks,
                                                          _league.Teams,
                                                          _league.Players,
